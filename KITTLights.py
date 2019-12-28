@@ -58,9 +58,6 @@ for color in [colorFade2, colorFade1, colorOn, colorFade1, colorFade2,
               colorOff]:
     subprocess.call(f"g910-led -g fkeys {color}", shell=True)
     time.sleep(.2)
-setKeys(on='F1')
-setKeys(on='F2', f1="F2")
-setKeys(on="F3", f1="F2", f2="F1")
 
 try:
     while True:
