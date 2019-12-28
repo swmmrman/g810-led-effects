@@ -11,48 +11,6 @@ import subprocess
 import time
 
 
-if len(sys.argv) > 1:
-    if sys.argv[1] == '--help':
-        print('k2000 [speed (default:0.02] [colorOff] [colorOn] [colorFade1]\
-[colorFade2]')
-        sys.exit()
-
-
-speed = 0.03
-colorOff = '000000'
-colorOn = 'FF0000'
-colorFade1 = 'AA0000'
-colorFade2 = '3F0000'
-mainColor = '1d0000'
-exitColor = "993F1F"
-
-if len(sys.argv) > 1:
-    try:
-        speed = float(sys.argv[1])
-    except TypeError:
-        print('Speed arg error')
-if len(sys.argv) > 2:
-    try:
-        colorOff = sys.argv[2]
-    except TypeError:
-        print('colorOff arg error')
-if len(sys.argv) > 3:
-    try:
-        colorOn = sys.argv[3]
-    except TypeError:
-        print('colorOn arg error')
-if len(sys.argv) > 4:
-    try:
-        colorFade1 = sys.argv[4]
-    except TypeError:
-        print('colorFade1 arg error')
-if len(sys.argv) > 5:
-    try:
-        colorFade2 = sys.argv[5]
-    except TypeError:
-        print('colorFade2 arg error')
-
-
 def setKeys(**kwargs):
     """Set the keys to be lit or not."""
     pipeValue = "\\n"
@@ -72,6 +30,22 @@ def setKeys(**kwargs):
     subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
     time.sleep(speed)
 
+
+speed = 0.03
+colorOff = '000000'
+colorOn = 'FF0000'
+colorFade1 = 'AA0000'
+colorFade2 = '3F0000'
+mainColor = '1d0000'
+exitColor = "993F1F"
+fileName = sys.argv[0]
+
+if len(sys.argv) > 1:
+    for arg, value in enumerate(sys.argv):
+        print(f"arg={arg} value={value}")
+        if value == "-h" or value == "--help":
+            print(f"Usage {fileName} [options]")
+            sys.exit(0)
 
 subprocess.call('g910-led -a ' + mainColor, shell=True)
 for color in [colorFade2, colorFade1, colorOn, colorFade1, colorFade2,
