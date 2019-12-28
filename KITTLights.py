@@ -39,14 +39,15 @@ colorFade2 = '3F0000'
 mainColor = '1d0000'
 exitColor = "993F1F"
 fileName = sys.argv[0]
+row = ""
 
 if len(sys.argv) > 1:
     for arg, value in enumerate(sys.argv):
-        print(f"arg={arg} value={value}")
         if value == "-h" or value == "--help":
             print(f"Usage {fileName} [options]")
             sys.exit(0)
-
+        if value == "--homerow" or value == "-hr":
+            row = "homerow"
 subprocess.call('g910-led -a ' + mainColor, shell=True)
 for color in [colorFade2, colorFade1, colorOn, colorFade1, colorFade2,
               colorOff]:
