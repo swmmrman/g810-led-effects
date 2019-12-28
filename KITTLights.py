@@ -40,6 +40,11 @@ mainColor = '1d0000'
 exitColor = "993F1F"
 fileName = sys.argv[0]
 row = ""
+key_sets = {
+    'homerow': [
+        "caps_lock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"
+    ]
+}
 
 if len(sys.argv) > 1:
     for arg, value in enumerate(sys.argv):
