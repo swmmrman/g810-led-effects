@@ -42,7 +42,7 @@ fileName = sys.argv[0]
 row = ""
 key_sets = {
     'homerow': [
-        "caps_lock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"
+        "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"
     ]
 }
 
