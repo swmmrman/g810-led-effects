@@ -35,9 +35,9 @@ def setKeys(**kwargs):
 speed = 0.03
 colorOff = '000000'
 colorOn = 'FF0000'
-colorFade1 = 'AA0000'
+colorFade1 = '8d0000'
 colorFade2 = '3F0000'
-mainColor = '1d0000'
+mainColor = '2f0000'
 exitColor = "993F1F"
 fileName = sys.argv[0]
 row = ""
