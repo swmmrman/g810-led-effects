@@ -32,6 +32,15 @@ def setKeys(**kwargs):
     time.sleep(speed)
 
 
+def fetch_keys(index):
+    """Return the correct keyset."""
+    keys = []
+    if row == "homerow":
+        keys.append(key_sets.get('homerow')[index])
+    print(f"{keys}")
+    return keys
+
+
 speed = 0.03
 colorOff = '000000'
 colorOn = 'FF0000'
