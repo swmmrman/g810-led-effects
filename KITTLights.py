@@ -9,6 +9,7 @@ It is loosly based on the k2000 script from g810-led.
 import sys
 import subprocess
 import time
+from os import path
 
 
 def setKeys(**kwargs):
@@ -74,4 +75,7 @@ try:
             setKeys(on=f"F{i}", f1=f"F{j}", f2=f"F{k}", off=f"F{f}")
         setKeys(on="F2", f1="F1", off="F4")
 except KeyboardInterrupt:
-    subprocess.call(f"g910-led -a {exitColor}", shell=True)
+    if path.exists('/etc/g810-led/MyGroups'):
+        subprocess.call("g910-led -p /etc/g810-led/MyGroups", shell=True)
+    else:
+        subprocess.call(f"g910-led -a {exitColor}", shell=True)

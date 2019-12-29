@@ -1,0 +1,31 @@
+a 993F1F
+k backspace FFEEDD
+g numeric FFEEDD
+g logo 223311
+g gkeys FFEEDD
+g fkeys FF0000
+k esc FF0000
+k ~ FFEEDD
+k 1 FFEEDD
+k 2 FFEEDD
+k 3 FFEEDD
+k 4 FFEEDD
+k 5 FFEEDD
+k 6 FFEEDD
+k 7 FFEEDD
+k 8 FFEEDD
+k 9 FFEEDD
+k 0 FFEEDD
+k - FFEEDD
+k = FFEEDD
+k [ 00FF00
+k ] 00FF00
+k ; 00FF00
+k " 00FF00
+k , 00FF00
+k . 00FF00
+k / 00FF00
+k \ 00FF00
+k win_right 000000
+k win_left 000000
+c
