@@ -21,6 +21,9 @@ allkeys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 
 for f in range(1, 13):
     allkeys.append(F"F{f}")
+for g in range(1, 10):
+    allkeys.append(F"G{g}")
+
 
 
 def setKeys(keys):
@@ -40,5 +43,5 @@ while True:
     try:
         setKeys(allkeys)
     except KeyboardInterrupt:
-        # subprocess.call(f"g910-led -a 993f1f", shell=True)
+        subprocess.call(f"g910-led -a 993f1f", shell=True)
         sys.exit()
