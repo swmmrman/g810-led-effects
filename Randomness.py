@@ -19,6 +19,9 @@ allkeys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
            'backspace'
            ]
 
+for f in range(1, 13):
+    allkeys.append(F"F{f}")
+
 
 def setKeys(keys):
     """Set the keys to be lit or not."""
