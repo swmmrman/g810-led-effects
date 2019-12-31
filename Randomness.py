@@ -16,7 +16,7 @@ allkeys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
            '[', ']', ';', '"', ',', '.', '/', '~', 'tab', 'capslock', '\\',
            'space', 'shiftleft', 'shiftright', 'ctrlleft', 'ctrlright',
            'winleft', 'winright', 'altleft', 'altright', 'menu', 'enter',
-           'backspace'
+           'backspace', 'esc'
            ]
 
 for f in range(1, 13):
