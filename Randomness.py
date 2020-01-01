@@ -11,6 +11,7 @@ import random
 import string
 speed = .25
 
+"""building key lists"""
 allkeys = list(string.ascii_letters[0:])
 allkeys += ['-', '=', '[', ']', ';', '"', ',', '.', '/', '~', 'tab',
             'capslock', '\\', ' space', 'shiftleft', 'shiftright', 'ctrlleft',
@@ -32,12 +33,14 @@ for i in range(0, 11):
 
 
 def setKeys(keys):
-    """Set the keys to be lit or not."""
+    """Set the keys color. This was split due to missed keys."""
     pipeValue = "\\n"
     keys1 = keys[:int(len(keys)/2)]
     keys2 = keys[int(len(keys)/2):]
     for key in keys1:
-        randColor = format(random.randint(0, 256), 'x') + format(random.randint(0, 256), 'x') + format(random.randint(0, 256), 'x')
+        randColor = format(random.randint(0, 256), 'x') + \
+                    format(random.randint(0, 256), 'x') + \
+                    format(random.randint(0, 256), 'x')
         pipeValue += "k " + key + " " + randColor + "\\n"
     pipeValue += 'c'
     pipeValue = f"echo -e '{pipeValue}'"
@@ -45,7 +48,9 @@ def setKeys(keys):
     subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
     pipeValue = "\\n"
     for key in keys2:
-        randColor = format(random.randint(0, 255), 'x') + format(random.randint(0, 255), 'x') + format(random.randint(0, 255), 'x')
+        randColor = format(random.randint(0, 255), 'x') + \
+                    format(random.randint(0, 255), 'x') + \
+                    format(random.randint(0, 255), 'x')
         pipeValue += "k " + key + " " + randColor + "\\n"
     pipeValue += 'c'
     pipeValue = f"echo -e '{pipeValue}'"
