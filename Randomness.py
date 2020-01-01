@@ -18,7 +18,7 @@ allkeys += ['-', '=', '[', ']', ';', '"', ',', '.', '/', '~', 'tab',
             'center', 'backspace', 'esc', 'logo', 'logo2', 'top', 'bottom',
             'left', 'right', 'ins', 'home', 'pageup', 'pagedown', 'del', 'end',
             'num+', 'num-', 'num*', 'num/', 'numenter', 'num.', 'num_lock',
-            'printscr', 'scroll_lock', 'pause', 'space'
+            'printscr', 'scroll_lock', 'pause', 'space', 'enter'
             ]
 
 for num in range(0, 11):
@@ -34,10 +34,20 @@ for i in range(0, 11):
 def setKeys(keys):
     """Set the keys to be lit or not."""
     pipeValue = "\\n"
-    for key in keys:
+    keys1 = keys[:int(len(keys)/2)]
+    keys2 = keys[int(len(keys)/2):]
+    for key in keys1:
+        randColor = format(random.randint(0, 256), 'x') + format(random.randint(0, 256), 'x') + format(random.randint(0, 256), 'x')
+        pipeValue += "k " + key + " " + randColor + "\\n"
+    pipeValue += 'c'
+    pipeValue = f"echo -e '{pipeValue}'"
+    # print(f"{pipeValue}")
+    subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
+    pipeValue = "\\n"
+    for key in keys2:
         randColor = format(random.randint(0, 255), 'x') + format(random.randint(0, 255), 'x') + format(random.randint(0, 255), 'x')
         pipeValue += "k " + key + " " + randColor + "\\n"
-    pipeValue = pipeValue + 'c'
+    pipeValue += 'c'
     pipeValue = f"echo -e '{pipeValue}'"
     # print(f"{pipeValue}")
     subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
