@@ -8,22 +8,27 @@ import sys
 import subprocess
 import time
 import random
+import string
 speed = .25
 
-allkeys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-           'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-           '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
-           '[', ']', ';', '"', ',', '.', '/', '~', 'tab', 'capslock', '\\',
-           'space', 'shiftleft', 'shiftright', 'ctrlleft', 'ctrlright',
-           'winleft', 'winright', 'altleft', 'altright', 'menu', 'enter',
-           'backspace', 'esc'
-           ]
+allkeys = list(string.ascii_letters[0:])
+allkeys += ['-', '=', '[', ']', ';', '"', ',', '.', '/', '~', 'tab',
+            'capslock', '\\', ' space', 'shiftleft', 'shiftright', 'ctrlleft',
+            'ctrlright', 'winleft', 'winright', 'altleft', 'altright', 'menu',
+            'center', 'backspace', 'esc', 'logo', 'logo2', 'top', 'bottom',
+            'left', 'right', 'ins', 'home', 'pageup', 'pagedown', 'del', 'end',
+            'num+', 'num-', 'num*', 'num/', 'numenter', 'num.', 'num_lock',
+            'printscr', 'scroll_lock', 'pause', 'space'
+            ]
 
+for num in range(0, 11):
+    allkeys.append(F"num{num}")
 for f in range(1, 13):
     allkeys.append(F"F{f}")
 for g in range(1, 10):
     allkeys.append(F"G{g}")
-
+for i in range(0, 11):
+    allkeys.append(str(i))
 
 
 def setKeys(keys):
