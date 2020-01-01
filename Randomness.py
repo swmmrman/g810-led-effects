@@ -63,5 +63,6 @@ while True:
     try:
         setKeys(allkeys)
     except KeyboardInterrupt:
+        print("\033[F\033K")  # clear ^C from terminal
         subprocess.call(f"g910-led -a 993f1f", shell=True)
         sys.exit()
