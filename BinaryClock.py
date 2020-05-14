@@ -31,7 +31,6 @@ KEYS = {
 def SetKeys():
     """Set the required keys to on or off."""
     command_string = "echo -e '\n"
-    keys = []
     t = time.localtime()
     td = {
         'month':    t.tm_mon,
