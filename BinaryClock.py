@@ -6,7 +6,6 @@ import time
 import sys
 
 UPDATE_TIME = 1 # Time in seconds.
-
 COLORS = {
     'hour'      : "FF0000",
     'minute'    : "00FF00",
@@ -50,7 +49,7 @@ subprocess.call(F"g910-led -k {KEYS['seperator']} {COLORS['seperator']}", shell=
 try:
     while True:
         SetKeys()
-        time.sleep(1)
+        time.sleep(UPDATE_TIME)
 except KeyboardInterrupt:
     subprocess.call(f"g910-led -a {COLORS['exit']}", shell=True)
 print("\033[A")
