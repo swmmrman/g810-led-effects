@@ -26,6 +26,6 @@ k , 00FF00
 k . 00FF00
 k / 00FF00
 k \ 00FF00
-k win_right 000000
-k win_left 000000
+k win_right ff3100
+k win_left ff3100
 c
