@@ -34,7 +34,10 @@ def setKeys(**kwargs):
     pipeValue = pipeValue + 'c'
     pipeValue = f"echo -e '{pipeValue}'"
     # print(f"{pipeValue}")
-    subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
+    ret = subprocess.call(f"{pipeValue} | g910-led -pp", shell=True)
+    while ret != 0:
+        time.sleep(0.5)
+        ret = subprocess.call('g910-led -a ' + mainColor, shell=True)
     time.sleep(speed)
 
 
