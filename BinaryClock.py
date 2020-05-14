@@ -7,6 +7,8 @@ import sys
 
 UPDATE_TIME = 1 # Time in seconds.
 COLORS = {
+    'month'     : "FFFF00",
+    'day'       : "00FFFF",
     'hour'      : "FF0000",
     'minute'    : "00FF00",
     'second'    : "0000FF",
@@ -16,8 +18,10 @@ COLORS = {
     'exit'      : "993F1F",
 }
 KEYS  = {
-    'hour'     : ['1','2','3','4','5'],
-    'minute'   : ['7','8','9','0','-','='],
+    'month'    : ['G6', 'G7', 'G8', 'G9'],
+    'day'      : ['G1', 'G2', 'G3', "G4", "G5"],
+    'hour'     : ['1', '2', '3', '4', '5'],
+    'minute'   : ['7', '8', '9', '0', '-', '='],
     'second'   : ['c', 'v', 'b', 'n', 'm', ','],
     "seperator" : '6',
 }
@@ -28,7 +32,9 @@ def SetKeys():
     keys = []
     t = time.localtime()
     td = {
-        'hour' : t.tm_hour,
+        'month'  : t.tm_mon,
+        'day'    : t.tm_mday,
+        'hour'   : t.tm_hour,
         'minute' : t.tm_min,
         'second' : t.tm_sec,
     }
