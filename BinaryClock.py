@@ -7,6 +7,7 @@ import signal
 import sys
 import threading
 import gi
+import setproctitle
 from gi.repository import Gio
 
 gi.require_version('Gio', '2.0')
@@ -15,6 +16,8 @@ Application = Gio.Application.new(
 )
 Application.register()
 running = True
+# Set process name for easy finding
+setproctitle.setproctitle("BinaryClock")
 
 def sig_handler(sig, frame):
     global running
