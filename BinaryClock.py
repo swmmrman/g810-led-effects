@@ -25,8 +25,8 @@ COLORS = {
     'hour':      "FF0000",
     'minute':    "00FF00",
     'second':    "0000FF",
-    'seperator': "FFEEDD",
-    'off':       "000000",
+    'seperator': "993F1F", # "FFEEDD"
+    'off':       "492824",
     'block':     "993F1F",
     'exit':      "993F1F",
 }
