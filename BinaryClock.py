@@ -10,12 +10,6 @@ import gi
 import setproctitle
 from gi.repository import Gio
 
-gi.require_version('Gio', '2.0')
-Application = Gio.Application.new(
-    "G810.BinaryClock", Gio.ApplicationFlags.FLAGS_NONE
-)
-Application.register()
-running = True
 # Set process name for easy finding
 setproctitle.setproctitle("BinaryClock")
 
@@ -74,6 +68,13 @@ def SetKeys():
 if len(sys.argv) > 1:
     print("Usage python3 BinaryClock.py")
     sys.exit(1)
+
+gi.require_version('Gio', '2.0')
+Application = Gio.Application.new(
+    "G810.BinaryClock", Gio.ApplicationFlags.FLAGS_NONE
+)
+Application.register()
+running = True
 subprocess.call(F"g810-led -a {COLORS['block']}", shell=True)
 subprocess.call(
     F"g810-led -k {KEYS['seperator']} {COLORS['seperator']}", shell=True
