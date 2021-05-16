@@ -63,8 +63,8 @@ def SetKeys():
 
 if len(sys.argv) > 1:
     print("Usage python3 BinaryClock.py")
-    subprocess.call(F"g810-led -a {COLORS['block']}", shell=True)
     sys.exit(1)
+subprocess.call(F"g810-led -a {COLORS['block']}", shell=True)
 subprocess.call(
     F"g810-led -k {KEYS['seperator']} {COLORS['seperator']}", shell=True
 )
