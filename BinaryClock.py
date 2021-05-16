@@ -75,17 +75,13 @@ subprocess.call(F"g810-led -a {COLORS['block']}", shell=True)
 subprocess.call(
     F"g810-led -k {KEYS['seperator']} {COLORS['seperator']}", shell=True
 )
-try:
-    while True:
 
 def job():
     global running
     while running:
         SetKeys()
         time.sleep(UPDATE_TIME)
-except KeyboardInterrupt:
     subprocess.call(f"g810-led -a {COLORS['exit']}", shell=True)
-print("\033[A")
 
 t = threading.Thread(target=job)
 t.start()
