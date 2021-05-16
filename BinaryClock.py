@@ -3,9 +3,19 @@
 
 import subprocess
 import time
+import signal
 import sys
 
+running = True
+def sig_handler(sig, frame):
+    global running
+    print(f"Caught: {sig}")
+    running = False
 
+signal.signal(signal.SIGTERM, sig_handler)
+signal.signal(signal.SIGABRT, sig_handler)
+signal.signal(signal.SIGHUP, sig_handler)
+signal.signal(signal.SIGINT, sig_handler)
 UPDATE_TIME = 1  # Time in seconds.
 COLORS = {
     'month':     "FFFF00",
