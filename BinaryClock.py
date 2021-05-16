@@ -5,8 +5,10 @@ import subprocess
 import time
 import signal
 import sys
+import threading
 
 running = True
+
 def sig_handler(sig, frame):
     global running
     print(f"Caught: {sig}")
@@ -68,8 +70,16 @@ subprocess.call(
 )
 try:
     while True:
+
+def job():
+    global running
+    while running:
         SetKeys()
         time.sleep(UPDATE_TIME)
 except KeyboardInterrupt:
     subprocess.call(f"g810-led -a {COLORS['exit']}", shell=True)
 print("\033[A")
+
+t = threading.Thread(target=job)
+t.start()
+t.join()
