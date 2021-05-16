@@ -6,7 +6,14 @@ import time
 import signal
 import sys
 import threading
+import gi
+from gi.repository import Gio
 
+gi.require_version('Gio', '2.0')
+Application = Gio.Application.new(
+    "G810.BinaryClock", Gio.ApplicationFlags.FLAGS_NONE
+)
+Application.register()
 running = True
 
 def sig_handler(sig, frame):
