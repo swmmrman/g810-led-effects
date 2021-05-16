@@ -8,6 +8,8 @@ import sys
 import threading
 import gi
 import setproctitle
+import os
+import psutil
 from gi.repository import Gio
 
 # Set process name for easy finding
@@ -69,12 +71,31 @@ if len(sys.argv) > 1:
     print("Usage python3 BinaryClock.py")
     sys.exit(1)
 
+if os.path.exists('/tmp/BinaryClock.pid'):
+  with open('/tmp/BinaryClock.pid', 'r') as pidfile:
+    for line in pidfile:
+      if line != "":
+        if os.path.exists(F"/proc/{line}"):
+          print("Another instance is running.")
+          sys.exit(0)
+    pidfile.close()
+    with open('/tmp/BinaryClock.pid', "w") as pidfile:
+      pid = os.getpid()
+      pidfile.write(F"{pid}")
+
+else:
+  with open('/tmp/BinaryClock.pid', 'w') as pidfile:
+    pid = os.getpid()
+    pidfile.write(F"{pid}")
+    pidfile.close()
+
 gi.require_version('Gio', '2.0')
 Application = Gio.Application.new(
     "G810.BinaryClock", Gio.ApplicationFlags.FLAGS_NONE
 )
 Application.register()
 running = True
+
 subprocess.call(F"g810-led -a {COLORS['block']}", shell=True)
 subprocess.call(
     F"g810-led -k {KEYS['seperator']} {COLORS['seperator']}", shell=True
@@ -90,3 +111,4 @@ def job():
 t = threading.Thread(target=job)
 t.start()
 t.join()
+os.remove('/tmp/BinaryClock.pid')
